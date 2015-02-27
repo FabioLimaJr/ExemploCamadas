@@ -1,0 +1,20 @@
+CREATE TABLE pessoa
+(idPessoa INT NOT NULL AUTO_INCREMENT,
+nome VARCHAR(255),
+cpf VARCHAR(255),
+PRIMARY KEY (idPessoa));
+
+CREATE TABLE professor
+(idProfessor INT NOT NULL,
+salario DOUBLE,
+FOREIGN KEY (idProfessor) REFERENCES pessoa(idPessoa)
+ON DELETE CASCADE ON UPDATE CASCADE);
+
+CREATE TABLE aluno
+(idAluno INT NOT NULL,
+idProfessor INT,
+opiniao VARCHAR(500),
+FOREIGN KEY (idAluno) REFERENCES pessoa(idPessoa)
+ON DELETE CASCADE ON UPDATE CASCADE,
+FOREIGN KEY(idProfessor) REFERENCES professor(idProfessor)
+ON DELETE CASCADE ON UPDATE CASCADE);
